@@ -1,17 +1,11 @@
 # Fresh-Buyer-Flutter
 
 A new Flutter project.
-An e-commerce application using flutter, make effort to build it better. You can upon it.
 
-## Getting Started
+An e-commerce application using flutter, make effort to build it better. What we are doing is going to make a new, high-performance attractive e-commerce application with flutter. You can expect it to complete or become one of us to make it better.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
--   [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
--   [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Preview
+**Not only iOS and Android but also Web.**
+![](./preview/Preview%207.png)
+![](./preview/Preview%203.png)
+![](./preview/Preview%208.png)
