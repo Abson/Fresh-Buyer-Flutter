@@ -22,11 +22,11 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
-          children: const [
-            HomeHeader(),
-            SizedBox(height: 24),
-            SearchField(),
-            SizedBox(height: 24),
+          children: [
+            const HomeHeader(),
+            const SizedBox(height: 24),
+            const SearchField(),
+            const SizedBox(height: 24),
             SpecialOffers()
           ],
         ),
