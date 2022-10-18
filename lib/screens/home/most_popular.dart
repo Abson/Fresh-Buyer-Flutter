@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:freshbuyer/model/popular.dart';
 
-class MostPupular extends StatefulWidget {
-  const MostPupular({super.key});
+class MostPupularCategory extends StatefulWidget {
+  const MostPupularCategory({super.key});
 
   @override
-  State<MostPupular> createState() => _MostPupularState();
+  State<MostPupularCategory> createState() => _MostPupularCategoryState();
 }
 
-class _MostPupularState extends State<MostPupular> {
+class _MostPupularCategoryState extends State<MostPupularCategory> {
   late final datas = homePopularCategories;
 
   int _selectIndex = 0;

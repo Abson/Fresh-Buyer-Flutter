@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
         SizedBox(height: 24),
         SpecialOffers(),
         SizedBox(height: 24),
-        MostPupular(),
+        MostPupularCategory(),
       ],
     );
   }
