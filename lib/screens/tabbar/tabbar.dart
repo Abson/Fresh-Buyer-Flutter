@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freshbuyer/image_loader.dart';
 import 'package:freshbuyer/screens/home/home.dart';
+import 'package:freshbuyer/size_config.dart';
 
 class TabbarItem {
   final String lightIcon;
@@ -91,6 +92,7 @@ class _FRTabbarScreenState extends State<FRTabbarScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       body: screens[_select],
       bottomNavigationBar: BottomNavigationBar(
