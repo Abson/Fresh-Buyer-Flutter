@@ -1,8 +1,6 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:freshbuyer/model/category.dart';
 import 'package:freshbuyer/model/special_offer.dart';
-import 'package:freshbuyer/size_config.dart';
 
 class SpecialOffers extends StatefulWidget {
   const SpecialOffers({super.key});

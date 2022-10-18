@@ -1,5 +1,3 @@
-import 'package:freshbuyer/screens/home/special_offer.dart';
-
 class SpecialOffer {
   final String discount;
   final String title;
