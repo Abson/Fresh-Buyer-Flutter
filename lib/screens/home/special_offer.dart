@@ -1,5 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:freshbuyer/model/special_offers.dart';
+import 'package:freshbuyer/model/category.dart';
+import 'package:freshbuyer/model/special_offer.dart';
 import 'package:freshbuyer/size_config.dart';
 
 class SpecialOffers extends StatefulWidget {
@@ -10,7 +12,8 @@ class SpecialOffers extends StatefulWidget {
 }
 
 class _SpecialOffersState extends State<SpecialOffers> {
-  late final List<SpecialOffer> datas = specialOfferDatas;
+  late final List<Category> categories = homeCategries;
+  late final List<SpecialOffer> specials = homeSpecialOffers;
 
   int selectIndex = 0;
 
@@ -42,7 +45,7 @@ class _SpecialOffersState extends State<SpecialOffers> {
             ),
             child: PageView.builder(
               itemBuilder: _buildPageItem,
-              itemCount: 4,
+              itemCount: specials.length,
               allowImplicitScrolling: true,
               onPageChanged: (value) {
                 setState(() => selectIndex = value);
@@ -53,8 +56,9 @@ class _SpecialOffersState extends State<SpecialOffers> {
         ]),
         const SizedBox(height: 24),
         GridView.builder(
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          itemCount: datas.length,
+          itemCount: categories.length,
           scrollDirection: Axis.vertical,
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
             mainAxisExtent: 100,
@@ -63,7 +67,7 @@ class _SpecialOffersState extends State<SpecialOffers> {
             maxCrossAxisExtent: 77,
           ),
           itemBuilder: ((context, index) {
-            final data = datas[index];
+            final data = categories[index];
             return Column(
               children: [
                 Container(
@@ -93,6 +97,7 @@ class _SpecialOffersState extends State<SpecialOffers> {
   }
 
   Widget _buildPageItem(BuildContext context, int index) {
+    final data = specials[index];
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -102,26 +107,33 @@ class _SpecialOffersState extends State<SpecialOffers> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text('25%', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40)),
-                SizedBox(height: 12),
-                Text('Today’s Special!',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                SizedBox(height: 12),
-                Text('Get discount for every order, only valid for today',
-                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12)),
+              children: [
+                Text(
+                  data.discount,
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  data.title,
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  data.detail,
+                  style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
+                ),
               ],
             ),
           ),
         ),
-        Image.asset('assets/icons/product_sofa.png')
+        Image.asset(data.icon),
       ],
     );
   }
 
   Widget _buildPageIndicator() {
     List<Widget> list = [];
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < specials.length; i++) {
       list.add(i == selectIndex ? _indicator(true) : _indicator(false));
     }
     return Container(
@@ -144,17 +156,6 @@ class _SpecialOffersState extends State<SpecialOffers> {
         width: isActive ? 16 : 4.0,
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(2)),
-          // boxShadow: [
-          //   isActive
-          //       ? BoxShadow(
-          //           color: const Color(0XFF101010).withOpacity(0.72),
-          //           blurRadius: 4.0,
-          //           spreadRadius: 1.0,
-          //           offset: const Offset(0.0, 0.0),
-          //         )
-          //       : const BoxShadow(color: Colors.transparent)
-          // ],
-          // shape: BoxShape.circle,
           color: isActive ? const Color(0XFF101010) : const Color(0xFFBDBDBD),
         ),
       ),
