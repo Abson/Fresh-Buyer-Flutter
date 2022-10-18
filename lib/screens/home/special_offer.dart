@@ -21,20 +21,7 @@ class _SpecialOffersState extends State<SpecialOffers> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [
-            Text(
-              'Special Offers',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Color(0xFF212121)),
-            ),
-            Text(
-              'See All',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF212121)),
-            ),
-          ],
-        ),
+        _buildTitle(),
         const SizedBox(height: 24),
         Stack(children: [
           Container(
@@ -92,6 +79,23 @@ class _SpecialOffersState extends State<SpecialOffers> {
             );
           }),
         )
+      ],
+    );
+  }
+
+  Widget _buildTitle() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: const [
+        Text(
+          'Special Offers',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Color(0xFF212121)),
+        ),
+        Text(
+          'See All',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF212121)),
+        ),
       ],
     );
   }
