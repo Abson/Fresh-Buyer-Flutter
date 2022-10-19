@@ -1,9 +1,13 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:freshbuyer/components/product_card.dart';
 import 'package:freshbuyer/model/popular.dart';
 import 'package:freshbuyer/screens/home/hearder.dart';
 import 'package:freshbuyer/screens/home/most_popular.dart';
 import 'package:freshbuyer/screens/home/search_field.dart';
 import 'package:freshbuyer/screens/home/special_offer.dart';
+import 'package:freshbuyer/screens/mostpopular/most_popular_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   final String title;
@@ -23,9 +27,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     const padding = EdgeInsets.fromLTRB(24, 24, 24, 0);
     return Scaffold(
-      // backgroundColor: Colors.red,
-      // body: Padding(
-      //   padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
       body: CustomScrollView(
         slivers: <Widget>[
           const SliverPadding(
@@ -39,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: padding,
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
-                ((context, index) => _buildBody()),
+                ((context, index) => _buildBody(context)),
                 childCount: 1,
               ),
             ),
@@ -51,56 +52,19 @@ class _HomeScreenState extends State<HomeScreen> {
           const SliverAppBar(flexibleSpace: SizedBox(height: 24))
         ],
       ),
-      // ),
     );
   }
 
-  Widget _buildBody() {
+  Widget _buildBody(BuildContext context) {
     return Column(
-      children: const [
-        SearchField(),
-        SizedBox(height: 24),
-        SpecialOffers(),
-        SizedBox(height: 24),
-        MostPupularCategory(),
-      ],
-    );
-  }
-
-  Widget _buildSoldPoint(double star, int sold) {
-    return Row(
       children: [
-        Image.asset('assets/icons/start@2x.png', width: 20, height: 20),
-        const SizedBox(width: 8),
-        Text(
-          '$star',
-          style: const TextStyle(
-            color: Color(0xFF616161),
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        const SizedBox(width: 8),
-        const Text(
-          '|',
-          style: TextStyle(fontWeight: FontWeight.w500, color: Color(0xFF616161), fontSize: 14),
-        ),
-        const SizedBox(width: 8),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(6)),
-            color: const Color(0xFF101010).withOpacity(0.08),
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-          child: Text(
-            '$sold sold',
-            style: const TextStyle(
-              color: Color(0xFF35383F),
-              fontWeight: FontWeight.w500,
-              fontSize: 10,
-            ),
-          ),
-        ),
+        const SearchField(),
+        const SizedBox(height: 24),
+        const SpecialOffers(),
+        const SizedBox(height: 24),
+        MostPopularTitle(onTapseeAll: () => _onTapMostPopularSeeAll(context)),
+        const SizedBox(height: 24),
+        const MostPupularCategory(),
       ],
     );
   }
@@ -119,45 +83,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildPopularItem(BuildContext context, int index) {
     final data = datas[index % datas.length];
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-            color: Color(0xFFeeeeee),
-          ),
-          child: Stack(
-            children: [
-              Image.asset(data.icon, width: 182, height: 182),
-              Positioned(
-                top: 16,
-                right: 16,
-                child: GestureDetector(
-                  child: Image.asset('assets/icons/not_collected@2x.png', width: 28, height: 28),
-                ),
-              )
-            ],
-          ),
-        ),
-        const SizedBox(height: 12),
-        Text(
-          data.title,
-          style: const TextStyle(
-            color: Color(0xFF212121),
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-          ),
-        ),
-        const SizedBox(height: 10),
-        _buildSoldPoint(4.5, 6937),
-        const SizedBox(height: 10),
-        Text(
-          '\$${data.price.toStringAsFixed(2)}',
-          style:
-              const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF212121)),
-        )
-      ],
+    return ProductCard(
+      data: data,
     );
+  }
+
+  void _onTapMostPopularSeeAll(BuildContext context) {
+    Navigator.pushNamed(context, MostPopularScreen.route());
   }
 }

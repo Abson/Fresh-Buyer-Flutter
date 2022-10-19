@@ -11,8 +11,9 @@ class Product {
   final int sold;
   final double price;
   final String icon;
+  final String id;
 
-  Product({this.title = '', this.star = 0.0, this.sold = 0, this.price = 0.0, this.icon = ''});
+  Product({this.title = '', this.star = 0.0, this.sold = 0, this.price = 0.0, this.icon = '', this.id = '0'});
 }
 
 final homePopularCategories = [

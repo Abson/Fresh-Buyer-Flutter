@@ -17,22 +17,7 @@ class _MostPupularCategoryState extends State<MostPupularCategory> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _buildTitle(),
-        const SizedBox(height: 24),
         _buildBody(),
-      ],
-    );
-  }
-
-  Widget _buildTitle() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: const [
-        Text('Special Offers',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Color(0xFF212121))),
-        Text('See All',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF212121))),
       ],
     );
   }
@@ -61,7 +46,7 @@ class _MostPupularCategoryState extends State<MostPupularCategory> {
           borderRadius: const BorderRadius.all(
             Radius.circular(19),
           ),
-          border: Border.all(color: const Color(0xFF101010)),
+          border: Border.all(color: const Color(0xFF101010), width: 2),
           color: isActive ? const Color(0xFF101010) : const Color(0xFFFFFFFF),
         ),
         alignment: Alignment.center,
@@ -72,7 +57,7 @@ class _MostPupularCategoryState extends State<MostPupularCategory> {
             style: TextStyle(
               color: isActive ? const Color(0xFFFFFFFF) : const Color(0xFF101010),
               fontSize: 16,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),
@@ -85,5 +70,35 @@ class _MostPupularCategoryState extends State<MostPupularCategory> {
     setState(() {
       _selectIndex = index;
     });
+  }
+}
+
+class MostPopularTitle extends StatelessWidget {
+  const MostPopularTitle({
+    Key? key,
+    required this.onTapseeAll,
+  }) : super(key: key);
+
+  final Function onTapseeAll;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const Text('Special Offers',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Color(0xFF212121))),
+        GestureDetector(
+          onTap: () => onTapseeAll(),
+          child: const Text('See All',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: Color(0xFF212121),
+              )),
+        ),
+      ],
+    );
   }
 }
