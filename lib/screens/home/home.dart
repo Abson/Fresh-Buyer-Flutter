@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:freshbuyer/model/popular.dart';
 import 'package:freshbuyer/screens/home/hearder.dart';
 import 'package:freshbuyer/screens/home/most_popular.dart';
 import 'package:freshbuyer/screens/home/search_field.dart';
@@ -16,6 +17,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late final datas = homePopularProducts;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,60 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 childCount: 1,
               ),
             ),
-            SliverGrid(
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 185,
-                mainAxisSpacing: 24,
-                crossAxisSpacing: 16,
-                mainAxisExtent: 285,
-              ),
-              delegate: SliverChildBuilderDelegate(((context, index) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                        color: Color(0xFFeeeeee),
-                      ),
-                      child: Stack(
-                        children: [
-                          Image.asset('assets/icons/product_lamp.png', width: 182, height: 182),
-                          Positioned(
-                            top: 16,
-                            right: 16,
-                            child: GestureDetector(
-                              child: Image.asset(
-                                'assets/icons/not_collected@2x.png',
-                                width: 28,
-                                height: 28,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    const Text(
-                      'Glass Lamp',
-                      style: TextStyle(
-                        color: Color(0xFF212121),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    _buildSoldPoint(4.5, 6937),
-                    const SizedBox(height: 10),
-                    const Text(
-                      '\$40.00',
-                      style: TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF212121)),
-                    )
-                  ],
-                );
-              }), childCount: 20),
-            ),
+            _buildPopulars(),
             const SliverAppBar(flexibleSpace: SizedBox(height: 24))
           ],
         ),
@@ -143,6 +93,62 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
+      ],
+    );
+  }
+
+  Widget _buildPopulars() {
+    return SliverGrid(
+      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: 185,
+        mainAxisSpacing: 24,
+        crossAxisSpacing: 16,
+        mainAxisExtent: 285,
+      ),
+      delegate: SliverChildBuilderDelegate(_buildPopularItem, childCount: 30),
+    );
+  }
+
+  Widget _buildPopularItem(BuildContext context, int index) {
+    final data = datas[index % datas.length];
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+            color: Color(0xFFeeeeee),
+          ),
+          child: Stack(
+            children: [
+              Image.asset(data.icon, width: 182, height: 182),
+              Positioned(
+                top: 16,
+                right: 16,
+                child: GestureDetector(
+                  child: Image.asset('assets/icons/not_collected@2x.png', width: 28, height: 28),
+                ),
+              )
+            ],
+          ),
+        ),
+        const SizedBox(height: 12),
+        Text(
+          data.title,
+          style: const TextStyle(
+            color: Color(0xFF212121),
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
+        ),
+        const SizedBox(height: 10),
+        _buildSoldPoint(4.5, 6937),
+        const SizedBox(height: 10),
+        Text(
+          '\$${data.price.toStringAsFixed(2)}',
+          style:
+              const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF212121)),
+        )
       ],
     );
   }
