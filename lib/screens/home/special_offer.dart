@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:freshbuyer/components/special_offer_widget.dart';
 import 'package:freshbuyer/model/category.dart';
 import 'package:freshbuyer/model/special_offer.dart';
 
@@ -32,7 +33,10 @@ class _SpecialOffersState extends State<SpecialOffers> {
               borderRadius: BorderRadius.all(Radius.circular(32)),
             ),
             child: PageView.builder(
-              itemBuilder: _buildPageItem,
+              itemBuilder: (context, index) {
+                final data = specials[index];
+                return SpecialOfferWidget(context, data: data, index: index);
+              },
               itemCount: specials.length,
               allowImplicitScrolling: true,
               onPageChanged: (value) {
@@ -100,41 +104,6 @@ class _SpecialOffersState extends State<SpecialOffers> {
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF212121)),
           ),
         ),
-      ],
-    );
-  }
-
-  Widget _buildPageItem(BuildContext context, int index) {
-    final data = specials[index];
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 32),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  data.discount,
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  data.title,
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  data.detail,
-                  style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
-                ),
-              ],
-            ),
-          ),
-        ),
-        Image.asset(data.icon),
       ],
     );
   }
