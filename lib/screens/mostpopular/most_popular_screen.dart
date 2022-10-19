@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:freshbuyer/components/app_bar.dart';
 import 'package:freshbuyer/components/product_card.dart';
 import 'package:freshbuyer/model/popular.dart';
 import 'package:freshbuyer/screens/home/most_popular.dart';
@@ -6,7 +7,7 @@ import 'package:freshbuyer/screens/home/most_popular.dart';
 class MostPopularScreen extends StatefulWidget {
   const MostPopularScreen({super.key});
 
-  static String route() => '/home';
+  static String route() => '/most_popular';
 
   @override
   State<MostPopularScreen> createState() => _MostPopularScreenState();
@@ -19,30 +20,14 @@ class _MostPopularScreenState extends State<MostPopularScreen> {
   Widget build(BuildContext context) {
     const padding = EdgeInsets.fromLTRB(24, 24, 24, 0);
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: (() => Navigator.pop(context)),
-          icon: Image.asset(
-            'assets/icons/back@2x.png',
-            scale: 2.0,
-          ),
-        ),
-        title: const Text(
-          'Most Popular',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-            color: Color(0xFF212121),
-          ),
-        ),
-        centerTitle: false,
+      appBar: FRAppBar.defaultAppBar(
+        context,
+        title: 'Most Popular',
         actions: [
-          GestureDetector(
-            child: Image.asset(
-              'assets/icons/search@2x.png',
-              scale: 2.0,
-            ),
-          )
+          IconButton(
+            icon: Image.asset('assets/icons/search@2x.png', scale: 2.0),
+            onPressed: () {},
+          ),
         ],
       ),
       body: CustomScrollView(slivers: [

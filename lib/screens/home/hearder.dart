@@ -45,16 +45,14 @@ class HomeHeader extends StatelessWidget {
               ),
             ),
           ),
-          Image.asset(
-            '$kIconPath/notification.png',
-            width: 28,
-            height: 28,
+          IconButton(
+            icon: Image.asset('$kIconPath/notification.png', width: 28, height: 28),
+            onPressed: () {},
           ),
           const SizedBox(width: 16),
-          Image.asset(
-            '$kIconPath/heart@2x.png',
-            width: 28,
-            height: 28,
+          IconButton(
+            icon: Image.asset('$kIconPath/heart@2x.png', width: 28, height: 28),
+            onPressed: () {},
           ),
         ],
       ),

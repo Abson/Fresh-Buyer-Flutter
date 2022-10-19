@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:freshbuyer/model/category.dart';
 import 'package:freshbuyer/model/special_offer.dart';
 
+typedef SpecialOffersOnTapSeeAll = void Function();
+
 class SpecialOffers extends StatefulWidget {
-  const SpecialOffers({super.key});
+  final SpecialOffersOnTapSeeAll? onTapSeeAll;
+  const SpecialOffers({super.key, this.onTapSeeAll});
 
   @override
   State<SpecialOffers> createState() => _SpecialOffersState();
@@ -85,14 +88,17 @@ class _SpecialOffersState extends State<SpecialOffers> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: const [
-        Text(
+      children: [
+        const Text(
           'Special Offers',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Color(0xFF212121)),
         ),
-        Text(
-          'See All',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF212121)),
+        TextButton(
+          onPressed: () => widget.onTapSeeAll?.call(),
+          child: const Text(
+            'See All',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF212121)),
+          ),
         ),
       ],
     );

@@ -8,6 +8,7 @@ import 'package:freshbuyer/screens/home/most_popular.dart';
 import 'package:freshbuyer/screens/home/search_field.dart';
 import 'package:freshbuyer/screens/home/special_offer.dart';
 import 'package:freshbuyer/screens/mostpopular/most_popular_screen.dart';
+import 'package:freshbuyer/screens/special_offers/special_offers_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   final String title;
@@ -60,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         const SearchField(),
         const SizedBox(height: 24),
-        const SpecialOffers(),
+        SpecialOffers(onTapSeeAll: () => _onTapSpecialOffersSeeAll(context)),
         const SizedBox(height: 24),
         MostPopularTitle(onTapseeAll: () => _onTapMostPopularSeeAll(context)),
         const SizedBox(height: 24),
@@ -90,5 +91,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _onTapMostPopularSeeAll(BuildContext context) {
     Navigator.pushNamed(context, MostPopularScreen.route());
+  }
+
+  void _onTapSpecialOffersSeeAll(BuildContext context) {
+    Navigator.pushNamed(context, SpecialOfferScreen.route());
   }
 }
