@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freshbuyer/image_loader.dart';
 import 'package:freshbuyer/screens/home/home.dart';
+import 'package:freshbuyer/screens/test/test_screen.dart';
 import 'package:freshbuyer/size_config.dart';
 
 class TabbarItem {
@@ -35,18 +36,10 @@ class _FRTabbarScreenState extends State<FRTabbarScreen> {
     const HomeScreen(
       title: '首页0',
     ),
-    const HomeScreen(
-      title: '首页1',
-    ),
-    const HomeScreen(
-      title: '首页2',
-    ),
-    const HomeScreen(
-      title: '首页3',
-    ),
-    const HomeScreen(
-      title: '首页4',
-    ),
+    const TestScreen(title: 'Cart'),
+    const TestScreen(title: 'Orders'),
+    const TestScreen(title: 'Wallet'),
+    const TestScreen(title: 'Profile'),
   ];
 
   static Image generateIcon(String path) {
