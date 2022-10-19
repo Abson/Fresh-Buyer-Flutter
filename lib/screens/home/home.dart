@@ -21,40 +21,48 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    const padding = EdgeInsets.fromLTRB(24, 24, 24, 0);
     return Scaffold(
       // backgroundColor: Colors.red,
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
-        child: CustomScrollView(
-          slivers: [
-            const SliverAppBar(
+      // body: Padding(
+      //   padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+      body: CustomScrollView(
+        slivers: <Widget>[
+          const SliverPadding(
+            padding: EdgeInsets.only(top: 24),
+            sliver: SliverAppBar(
               pinned: true,
               flexibleSpace: HomeHeader(),
             ),
-            SliverList(
+          ),
+          SliverPadding(
+            padding: padding,
+            sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
                 ((context, index) => _buildBody()),
                 childCount: 1,
               ),
             ),
-            _buildPopulars(),
-            const SliverAppBar(flexibleSpace: SizedBox(height: 24))
-          ],
-        ),
+          ),
+          SliverPadding(
+            padding: padding,
+            sliver: _buildPopulars(),
+          ),
+          const SliverAppBar(flexibleSpace: SizedBox(height: 24))
+        ],
       ),
+      // ),
     );
   }
 
   Widget _buildBody() {
     return Column(
       children: const [
-        SizedBox(height: 24),
         SearchField(),
         SizedBox(height: 24),
         SpecialOffers(),
         SizedBox(height: 24),
         MostPupularCategory(),
-        SizedBox(height: 24)
       ],
     );
   }
