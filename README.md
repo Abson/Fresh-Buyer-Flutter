@@ -6,7 +6,7 @@ An e-commerce application using flutter, make effort to build it better. What we
 
 # Online Preview
 
-I am using Surge, a free platform for deploy web application to deploy the project. If you intend to check up on my progress. [Click Here](https://fresh-buyer.surge.sh/#/)
+I am using Surge, a free platform for deploy web application to deploy the project. If you intend to check up on my process. [Click Here](https://fresh-buyer.surge.sh/#/)
 
 ## Finally Preview
 

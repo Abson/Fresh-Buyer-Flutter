@@ -39,13 +39,13 @@ class _MostPupularCategoryState extends State<MostPupularCategory> {
   Widget _buildItem(BuildContext context, int index) {
     final data = datas[index];
     final isActive = _selectIndex == index;
-    return GestureDetector(
-      onTap: (() => _onTapItem(index)),
+    const radius = BorderRadius.all(Radius.circular(19));
+    return InkWell(
+      borderRadius: radius,
+      onTap: () => _onTapItem(index),
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(
-            Radius.circular(19),
-          ),
+          borderRadius: radius,
           border: Border.all(color: const Color(0xFF101010), width: 2),
           color: isActive ? const Color(0xFF101010) : const Color(0xFFFFFFFF),
         ),
@@ -91,12 +91,14 @@ class MostPopularTitle extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Color(0xFF212121))),
         TextButton(
           onPressed: () => onTapseeAll(),
-          child: const Text('See All',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-                color: Color(0xFF212121),
-              )),
+          child: const Text(
+            'See All',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+              color: Color(0xFF212121),
+            ),
+          ),
         ),
       ],
     );

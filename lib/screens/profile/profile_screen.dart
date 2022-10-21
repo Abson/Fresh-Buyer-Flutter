@@ -48,41 +48,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ]),
           ),
-          SliverPadding(
-            padding: const EdgeInsets.only(top: 10.0),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  final data = datas[index];
-                  return _buildOption(context, index, data);
-                },
-                childCount: datas.length,
-              ),
-            ),
-          ),
+          _buildBody(),
         ],
       ),
     );
   }
 
-  Widget _buildOption(BuildContext context, int index, ProfileOption data) {
-    return GestureDetector(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
-        child: Row(
-          children: [
-            Image.asset(data.icon, scale: 2),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Text(
-                data.title,
-                style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
-              ),
-            ),
-            Image.asset('assets/icons/profile/arrow_right@2x.png', scale: 2)
-          ],
+  Widget _buildBody() {
+    return SliverPadding(
+      padding: const EdgeInsets.only(top: 10.0),
+      sliver: SliverList(
+        delegate: SliverChildBuilderDelegate(
+          (context, index) {
+            final data = datas[index];
+            return _buildOption(context, index, data);
+          },
+          childCount: datas.length,
         ),
       ),
+    );
+  }
+
+  Widget _buildOption(BuildContext context, int index, ProfileOption data) {
+    return ListTile(
+      leading: Image.asset(data.icon, scale: 2),
+      title: Text(
+        data.title,
+        style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+      ),
+      trailing: Image.asset('assets/icons/profile/arrow_right@2x.png', scale: 2),
       onTap: () {},
     );
   }
