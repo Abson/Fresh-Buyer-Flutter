@@ -44,7 +44,7 @@ packages:
     source: hosted
     version: "1.0.5"
   expandable_text:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: expandable_text
       url: "https://pub.dartlang.org"
