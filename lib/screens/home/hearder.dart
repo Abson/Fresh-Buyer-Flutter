@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freshbuyer/constants.dart';
+import 'package:freshbuyer/screens/profile/profile_screen.dart';
+import 'package:freshbuyer/screens/test/test_screen.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
@@ -12,7 +14,7 @@ class HomeAppBar extends StatelessWidget {
         children: [
           InkWell(
             borderRadius: const BorderRadius.all(Radius.circular(24)),
-            onTap: () {},
+            onTap: () => Navigator.pushNamed(context, ProfileScreen.route()),
             child: const CircleAvatar(
               backgroundImage: AssetImage('$kIconPath/me.png'),
               radius: 24,

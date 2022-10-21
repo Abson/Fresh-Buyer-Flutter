@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class TestScreen extends StatelessWidget {
   const TestScreen({super.key, this.title = ''});
 
-  final title;
+  static String route() => '/test';
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {

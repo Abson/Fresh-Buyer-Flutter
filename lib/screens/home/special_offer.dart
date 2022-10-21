@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:freshbuyer/components/special_offer_widget.dart';
 import 'package:freshbuyer/model/category.dart';
 import 'package:freshbuyer/model/special_offer.dart';
+import 'package:freshbuyer/screens/mostpopular/most_popular_screen.dart';
 
 typedef SpecialOffersOnTapSeeAll = void Function();
 
@@ -60,8 +61,8 @@ class _SpecialOffersState extends State<SpecialOffers> {
           ),
           itemBuilder: ((context, index) {
             final data = categories[index];
-            return InkWell(
-              onTap: () {},
+            return GestureDetector(
+              onTap: () => Navigator.pushNamed(context, MostPopularScreen.route()),
               child: Column(
                 children: [
                   Container(

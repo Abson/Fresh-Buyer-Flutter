@@ -1,8 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:freshbuyer/components/product_card.dart';
 import 'package:freshbuyer/model/popular.dart';
+import 'package:freshbuyer/screens/detail/detail_screen.dart';
 import 'package:freshbuyer/screens/home/hearder.dart';
 import 'package:freshbuyer/screens/home/most_popular.dart';
 import 'package:freshbuyer/screens/home/search_field.dart';
@@ -86,6 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final data = datas[index % datas.length];
     return ProductCard(
       data: data,
+      ontap: (data) => Navigator.pushNamed(context, ShopDetailScreen.route()),
     );
   }
 
