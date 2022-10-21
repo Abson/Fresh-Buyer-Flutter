@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freshbuyer/image_loader.dart';
 import 'package:freshbuyer/screens/home/home.dart';
+import 'package:freshbuyer/screens/profile/profile_screen.dart';
 import 'package:freshbuyer/screens/test/test_screen.dart';
 import 'package:freshbuyer/size_config.dart';
 
@@ -39,7 +40,7 @@ class _FRTabbarScreenState extends State<FRTabbarScreen> {
     const TestScreen(title: 'Cart'),
     const TestScreen(title: 'Orders'),
     const TestScreen(title: 'Wallet'),
-    const TestScreen(title: 'Profile'),
+    const ProfileScreen(),
   ];
 
   static Image generateIcon(String path) {

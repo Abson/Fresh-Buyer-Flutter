@@ -64,6 +64,7 @@ flutter:
     - assets/icons/tabbar/light/
     - assets/icons/light/
     - assets/icons/products/
+    - assets/icons/profile/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
