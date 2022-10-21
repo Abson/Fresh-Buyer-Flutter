@@ -16,7 +16,11 @@ class ProfileHeader extends StatelessWidget {
               const Expanded(
                 child: Text('Profile', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
               ),
-              Image.asset('assets/icons/tabbar/light/more_circle@2x.png', scale: 2),
+              IconButton(
+                iconSize: 28,
+                icon: Image.asset('assets/icons/tabbar/light/more_circle@2x.png', scale: 2),
+                onPressed: () {},
+              ),
             ],
           ),
         ),
@@ -30,9 +34,9 @@ class ProfileHeader extends StatelessWidget {
             Positioned.fill(
               child: Align(
                 alignment: Alignment.bottomRight,
-                child: IconButton(
-                  icon: Image.asset('assets/icons/profile/edit_square@2x.png', scale: 2),
-                  onPressed: () {},
+                child: InkWell(
+                  child: Image.asset('assets/icons/profile/edit_square@2x.png', scale: 2),
+                  onTap: () {},
                 ),
               ),
             ),

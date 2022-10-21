@@ -60,27 +60,30 @@ class _SpecialOffersState extends State<SpecialOffers> {
           ),
           itemBuilder: ((context, index) {
             final data = categories[index];
-            return Column(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: const Color(0x10101014),
-                    borderRadius: BorderRadius.circular(30),
+            return InkWell(
+              onTap: () {},
+              child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0x10101014),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Image.asset(data.icon, width: 28, height: 28),
+                    ),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Image.asset(data.icon, width: 28, height: 28),
+                  const SizedBox(height: 12),
+                  FittedBox(
+                    child: Text(
+                      data.title,
+                      style: const TextStyle(
+                          color: Color(0xff424242), fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
                   ),
-                ),
-                const SizedBox(height: 12),
-                FittedBox(
-                  child: Text(
-                    data.title,
-                    style: const TextStyle(
-                        color: Color(0xff424242), fontWeight: FontWeight.bold, fontSize: 16),
-                  ),
-                ),
-              ],
+                ],
+              ),
             );
           }),
         )

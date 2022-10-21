@@ -40,16 +40,16 @@ class _MostPupularCategoryState extends State<MostPupularCategory> {
     final data = datas[index];
     final isActive = _selectIndex == index;
     const radius = BorderRadius.all(Radius.circular(19));
-    return InkWell(
-      borderRadius: radius,
-      onTap: () => _onTapItem(index),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: radius,
-          border: Border.all(color: const Color(0xFF101010), width: 2),
-          color: isActive ? const Color(0xFF101010) : const Color(0xFFFFFFFF),
-        ),
-        alignment: Alignment.center,
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: radius,
+        border: Border.all(color: const Color(0xFF101010), width: 2),
+        color: isActive ? const Color(0xFF101010) : const Color(0xFFFFFFFF),
+      ),
+      alignment: Alignment.center,
+      child: InkWell(
+        borderRadius: radius,
+        onTap: () => _onTapItem(index),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 20),
           child: Text(

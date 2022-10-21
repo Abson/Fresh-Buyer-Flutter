@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:freshbuyer/constants.dart';
 
-class HomeHeader extends StatelessWidget {
-  const HomeHeader({super.key});
+class HomeAppBar extends StatelessWidget {
+  const HomeAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,10 +10,10 @@ class HomeHeader extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Row(
         children: [
-          const SizedBox(
-            width: 48,
-            height: 48,
-            child: CircleAvatar(
+          InkWell(
+            borderRadius: const BorderRadius.all(Radius.circular(24)),
+            onTap: () {},
+            child: const CircleAvatar(
               backgroundImage: AssetImage('$kIconPath/me.png'),
               radius: 24,
             ),
@@ -46,12 +46,14 @@ class HomeHeader extends StatelessWidget {
             ),
           ),
           IconButton(
-            icon: Image.asset('$kIconPath/notification.png', width: 28, height: 28),
+            iconSize: 28,
+            icon: Image.asset('$kIconPath/notification.png'),
             onPressed: () {},
           ),
           const SizedBox(width: 16),
           IconButton(
-            icon: Image.asset('$kIconPath/heart@2x.png', width: 28, height: 28),
+            iconSize: 28,
+            icon: Image.asset('$kIconPath/heart@2x.png'),
             onPressed: () {},
           ),
         ],
