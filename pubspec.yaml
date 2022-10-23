@@ -64,6 +64,7 @@ flutter:
     - assets/icons/tabbar/bold/
     - assets/icons/tabbar/light/
     - assets/icons/light/
+    - assets/icons/bold/
     - assets/icons/products/
     - assets/icons/profile/
     - assets/icons/detail/

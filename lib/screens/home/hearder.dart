@@ -54,7 +54,7 @@ class HomeAppBar extends StatelessWidget {
           const SizedBox(width: 16),
           IconButton(
             iconSize: 28,
-            icon: Image.asset('$kIconPath/heart@2x.png'),
+            icon: Image.asset('$kIconPath/light/heart@2x.png'),
             onPressed: () {},
           ),
         ],

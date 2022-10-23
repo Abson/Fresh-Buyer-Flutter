@@ -13,6 +13,7 @@ class ShopDetailScreen extends StatefulWidget {
 
 class _ShopDetailScreenState extends State<ShopDetailScreen> {
   int _quantity = 0;
+  bool _iscollected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -79,8 +80,8 @@ class _ShopDetailScreenState extends State<ShopDetailScreen> {
             ),
           ),
           IconButton(
-            onPressed: () {},
-            icon: Image.asset('assets/icons/heart@2x.png'),
+            onPressed: () => setState(() => _iscollected = !_iscollected),
+            icon: Image.asset('assets/icons/${_iscollected ? 'bold' : 'light'}/heart@2x.png'),
             iconSize: 28,
           ),
         ],
