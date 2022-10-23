@@ -35,8 +35,7 @@ class _ShopDetailScreenState extends State<ShopDetailScreen> {
                       color: const Color(0xFFeeeeee),
                       child: Image.asset(
                         'assets/icons/products/detail_sofa.png',
-                        fit: BoxFit.cover,
-                        width: double.maxFinite,
+                        fit: BoxFit.none,
                       ),
                     ),
                   ),
